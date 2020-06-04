@@ -1,0 +1,33 @@
+{
+    "name": "CarControls",
+    "maps": [
+        {
+            "name": "GamepadController",
+            "id": "78f3eac7-3e9d-425a-bbd7-bde911ff6ed0",
+            "actions": [
+                {
+                    "name": "Headlights",
+                    "type": "Button",
+                    "id": "ae6fd4d8-4596-4ca9-b1b2-e12b7cd2b35f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f2182c19-8431-47a5-bdfa-493b4b2fa8e2",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Headlights",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

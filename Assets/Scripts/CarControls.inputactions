@@ -1,0 +1,90 @@
+{
+    "name": "CarControls",
+    "maps": [
+        {
+            "name": "GamepadController",
+            "id": "737220f2-cfb1-4b59-b8f1-cf446e68f7fb",
+            "actions": [
+                {
+                    "name": "Headlight",
+                    "type": "Button",
+                    "id": "e818e1b0-60a9-40c1-b1fc-d9063a5c8cc0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Accelerate",
+                    "type": "PassThrough",
+                    "id": "38fe0b8e-c63d-49bf-9630-95f242aa806d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Brake",
+                    "type": "PassThrough",
+                    "id": "7b9b396a-785d-4034-b9c4-c230b3a62fa9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Direction",
+                    "type": "PassThrough",
+                    "id": "273f1587-4b5b-4afb-b479-278cf883250a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f442366b-73b9-4a66-a9db-4c0720de7ed2",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Headlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9f7492d-40eb-48bf-a5e0-09fab75731e9",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "193c9c25-3973-49ef-961f-e011e245a34a",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "546c6ec8-ac33-4bd3-b758-6044ef8ae3e5",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
