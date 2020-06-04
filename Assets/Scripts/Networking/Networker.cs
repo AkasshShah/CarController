@@ -35,7 +35,7 @@ public class Networker : MonoBehaviour
     {
         if (connected)
         {
-            string toSend = "{'f': " + forward.ToString() + ", 'r': " + right.ToString() + "}";
+            string toSend = "{\"f\": " + forward.ToString() + ", \"r\": " + right.ToString() + "}";
             sendData(toSend);
         }
     }
