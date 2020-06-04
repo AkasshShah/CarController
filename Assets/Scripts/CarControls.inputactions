@@ -14,25 +14,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Accelerate",
+                    "name": "Direction",
                     "type": "PassThrough",
-                    "id": "38fe0b8e-c63d-49bf-9630-95f242aa806d",
+                    "id": "273f1587-4b5b-4afb-b479-278cf883250a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Brake",
+                    "name": "Acceleration",
                     "type": "PassThrough",
-                    "id": "7b9b396a-785d-4034-b9c4-c230b3a62fa9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Direction",
-                    "type": "PassThrough",
-                    "id": "273f1587-4b5b-4afb-b479-278cf883250a",
+                    "id": "e48165c6-22ae-47b3-a4dd-e3141b1db985",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -52,34 +44,23 @@
                 },
                 {
                     "name": "",
-                    "id": "b9f7492d-40eb-48bf-a5e0-09fab75731e9",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accelerate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "193c9c25-3973-49ef-961f-e011e245a34a",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Brake",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "546c6ec8-ac33-4bd3-b758-6044ef8ae3e5",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ebbcf48-aa73-4d51-9308-1ed446641a5f",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Acceleration",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

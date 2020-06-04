@@ -18,6 +18,8 @@ public class Logger : MonoBehaviour
     public Button Disconnect;
     public Networker networking;
     public TMP_InputField IPInput;
+    public TMP_InputField Forward;
+    public TMP_InputField Right;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,8 @@ public class Logger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Right.text = networking.right.ToString();
+        Forward.text = networking.forward.ToString();
     }
 
     public void logMsg(string newLog, Color colour)

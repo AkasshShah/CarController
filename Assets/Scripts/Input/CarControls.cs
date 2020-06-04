@@ -27,25 +27,17 @@ public class @CarControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Accelerate"",
+                    ""name"": ""Direction"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""38fe0b8e-c63d-49bf-9630-95f242aa806d"",
+                    ""id"": ""273f1587-4b5b-4afb-b479-278cf883250a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Brake"",
+                    ""name"": ""Acceleration"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""7b9b396a-785d-4034-b9c4-c230b3a62fa9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Direction"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""273f1587-4b5b-4afb-b479-278cf883250a"",
+                    ""id"": ""e48165c6-22ae-47b3-a4dd-e3141b1db985"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -65,34 +57,23 @@ public class @CarControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b9f7492d-40eb-48bf-a5e0-09fab75731e9"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Accelerate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""193c9c25-3973-49ef-961f-e011e245a34a"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Brake"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""546c6ec8-ac33-4bd3-b758-6044ef8ae3e5"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ebbcf48-aa73-4d51-9308-1ed446641a5f"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Acceleration"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -104,9 +85,8 @@ public class @CarControls : IInputActionCollection, IDisposable
         // GamepadController
         m_GamepadController = asset.FindActionMap("GamepadController", throwIfNotFound: true);
         m_GamepadController_Headlight = m_GamepadController.FindAction("Headlight", throwIfNotFound: true);
-        m_GamepadController_Accelerate = m_GamepadController.FindAction("Accelerate", throwIfNotFound: true);
-        m_GamepadController_Brake = m_GamepadController.FindAction("Brake", throwIfNotFound: true);
         m_GamepadController_Direction = m_GamepadController.FindAction("Direction", throwIfNotFound: true);
+        m_GamepadController_Acceleration = m_GamepadController.FindAction("Acceleration", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -157,17 +137,15 @@ public class @CarControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_GamepadController;
     private IGamepadControllerActions m_GamepadControllerActionsCallbackInterface;
     private readonly InputAction m_GamepadController_Headlight;
-    private readonly InputAction m_GamepadController_Accelerate;
-    private readonly InputAction m_GamepadController_Brake;
     private readonly InputAction m_GamepadController_Direction;
+    private readonly InputAction m_GamepadController_Acceleration;
     public struct GamepadControllerActions
     {
         private @CarControls m_Wrapper;
         public GamepadControllerActions(@CarControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Headlight => m_Wrapper.m_GamepadController_Headlight;
-        public InputAction @Accelerate => m_Wrapper.m_GamepadController_Accelerate;
-        public InputAction @Brake => m_Wrapper.m_GamepadController_Brake;
         public InputAction @Direction => m_Wrapper.m_GamepadController_Direction;
+        public InputAction @Acceleration => m_Wrapper.m_GamepadController_Acceleration;
         public InputActionMap Get() { return m_Wrapper.m_GamepadController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -180,15 +158,12 @@ public class @CarControls : IInputActionCollection, IDisposable
                 @Headlight.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnHeadlight;
                 @Headlight.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnHeadlight;
                 @Headlight.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnHeadlight;
-                @Accelerate.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnAccelerate;
-                @Accelerate.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnAccelerate;
-                @Accelerate.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnAccelerate;
-                @Brake.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnBrake;
-                @Brake.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnBrake;
-                @Brake.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnBrake;
                 @Direction.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDirection;
                 @Direction.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDirection;
                 @Direction.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDirection;
+                @Acceleration.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnAcceleration;
+                @Acceleration.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnAcceleration;
+                @Acceleration.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnAcceleration;
             }
             m_Wrapper.m_GamepadControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -196,15 +171,12 @@ public class @CarControls : IInputActionCollection, IDisposable
                 @Headlight.started += instance.OnHeadlight;
                 @Headlight.performed += instance.OnHeadlight;
                 @Headlight.canceled += instance.OnHeadlight;
-                @Accelerate.started += instance.OnAccelerate;
-                @Accelerate.performed += instance.OnAccelerate;
-                @Accelerate.canceled += instance.OnAccelerate;
-                @Brake.started += instance.OnBrake;
-                @Brake.performed += instance.OnBrake;
-                @Brake.canceled += instance.OnBrake;
                 @Direction.started += instance.OnDirection;
                 @Direction.performed += instance.OnDirection;
                 @Direction.canceled += instance.OnDirection;
+                @Acceleration.started += instance.OnAcceleration;
+                @Acceleration.performed += instance.OnAcceleration;
+                @Acceleration.canceled += instance.OnAcceleration;
             }
         }
     }
@@ -212,8 +184,7 @@ public class @CarControls : IInputActionCollection, IDisposable
     public interface IGamepadControllerActions
     {
         void OnHeadlight(InputAction.CallbackContext context);
-        void OnAccelerate(InputAction.CallbackContext context);
-        void OnBrake(InputAction.CallbackContext context);
         void OnDirection(InputAction.CallbackContext context);
+        void OnAcceleration(InputAction.CallbackContext context);
     }
 }

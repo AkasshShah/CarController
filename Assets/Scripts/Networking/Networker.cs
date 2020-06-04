@@ -12,9 +12,10 @@ public class Networker : MonoBehaviour
     public string[] sendMsgs;
     public System.Net.Sockets.TcpClient clientSocket;
     public bool connected;
-    public string messageToSend = "qwertyuiop";
     private NetworkStream stream;
-
+    public InputController inp;
+    public float forward;
+    public float right;
 
     private void Awake()
     {
@@ -32,7 +33,7 @@ public class Networker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // right = inp.leftThumbStick.x;
     }
 
     public void connectedTrue()
@@ -83,14 +84,7 @@ public class Networker : MonoBehaviour
         }
         connectedFalse();
     }
-
-    public void testSend()
-    {
-        sendData(messageToSend);
-    }
-
-
-
+    
     public void toggelHeadLights()
     {
         log.logMsg(log.messages[7], log.normalColor);
