@@ -33,7 +33,11 @@ public class Networker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // right = inp.leftThumbStick.x;
+        if (connected)
+        {
+            string toSend = "{'f': " + forward.ToString() + ", 'r': " + right.ToString() + "}";
+            sendData(toSend);
+        }
     }
 
     public void connectedTrue()
