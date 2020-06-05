@@ -74,6 +74,7 @@ public class Networker : MonoBehaviour
         {
             connectedTrue();
             log.logMsg(log.messages[1], log.normalColor);
+            log.inputKeyboardSelected();
         }
     }
 
