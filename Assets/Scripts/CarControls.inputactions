@@ -30,10 +30,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "KeyboardForward",
-                    "type": "PassThrough",
-                    "id": "35b9c201-0130-4616-8895-8c42f9f0f759",
-                    "expectedControlType": "",
+                    "name": "IncreaseThrottleMultiplier",
+                    "type": "Button",
+                    "id": "377cc121-259b-449e-92d7-01cead8ed28a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DecreaseThrottleMultiplier",
+                    "type": "Button",
+                    "id": "dc1bc2a3-ef39-4f35-adff-731c5f45509d",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -74,12 +82,23 @@
                 },
                 {
                     "name": "",
-                    "id": "73514e2c-bd87-4314-b415-9d46e3b9ccee",
-                    "path": "<Keyboard>/w",
+                    "id": "4bb55381-a1b7-4396-8344-03d91987f598",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KeyboardForward",
+                    "action": "IncreaseThrottleMultiplier",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0abdacff-a190-4324-aa72-2c4fbe7d2e5e",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseThrottleMultiplier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -117,6 +136,30 @@
                     "name": "Left",
                     "type": "Button",
                     "id": "0d973159-6c0e-437f-9759-0ec0c8d30619",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Headlight",
+                    "type": "Button",
+                    "id": "225d4892-54e4-4775-898b-916fd19f5747",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "IncreaseThrottleMultiplier",
+                    "type": "Button",
+                    "id": "44434aa6-5483-4166-988e-cf5d9b96751e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DecreaseThrottleMultiplier",
+                    "type": "Button",
+                    "id": "4a547099-1d61-4f00-b552-8d048ae78f65",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -164,6 +207,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42fe5799-8c7d-4ddb-b957-da2c964ee502",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Headlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f77d7cb-08c6-4448-95ea-beff868a1f35",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseThrottleMultiplier",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8368a433-27b1-4175-bd4d-6008c3fcff9a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseThrottleMultiplier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

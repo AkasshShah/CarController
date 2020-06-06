@@ -15,6 +15,12 @@ public class InputController : MonoBehaviour
         EnableKeyboard(false);
     }
 
+    private void Start()
+    {
+        EnableController(false);
+        EnableKeyboard(false);
+    }
+
     private void OnDisable()
     {
         control.GamepadController.Disable();
@@ -30,8 +36,11 @@ public class InputController : MonoBehaviour
         control.GamepadController.Direction.canceled += ctx => ntwk.right = 0f;
         control.GamepadController.Acceleration.performed += ctx => ntwk.forward = ctx.ReadValue<Vector2>().y * ThrottleMultiplier.value;
         control.GamepadController.Acceleration.canceled += ctx => ntwk.forward = 0f;
+        control.GamepadController.IncreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value += ThrottleMultiplier.maxValue/10f;
+        control.GamepadController.DecreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value -= ThrottleMultiplier.maxValue / 10f;
 
         // Keyboard Controls
+        control.Keyboard.Headlight.performed += ctx => ntwk.toggelHeadLights();
         control.Keyboard.Forward.performed += ctx => ntwk.forward = ThrottleMultiplier.value;
         control.Keyboard.Forward.canceled += ctx => ntwk.forward = 0f;
         control.Keyboard.Backward.performed += ctx => ntwk.forward = -1f * ThrottleMultiplier.value;
@@ -40,6 +49,8 @@ public class InputController : MonoBehaviour
         control.Keyboard.Right.canceled += ctx => ntwk.right = 0f;
         control.Keyboard.Left.performed += ctx => ntwk.right = -1f;
         control.Keyboard.Left.canceled += ctx => ntwk.right = 0f;
+        control.Keyboard.IncreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value += ThrottleMultiplier.maxValue / 10f;
+        control.Keyboard.DecreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value -= ThrottleMultiplier.maxValue / 10f;
     }
 
     public void EnableController(bool torf)
