@@ -32,7 +32,6 @@ ExportedObj/
 # *.csproj
 # *.unityproj
 # *.sln
-Assets/Clean Vector Icons/
 *.suo
 *.tmp
 *.user
