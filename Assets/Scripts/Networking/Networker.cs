@@ -45,6 +45,7 @@ public class Networker : MonoBehaviour
         connected = true;
         log.setDisconnectInteractable();
         log.denyTextInput();
+        log.connected(true);
     }
 
     public void connectedFalse()
@@ -52,6 +53,7 @@ public class Networker : MonoBehaviour
         connected = false;
         log.setConnectInteractable();
         log.allowTextInput();
+        log.connected(false);
     }
 
     public void connectToBot()

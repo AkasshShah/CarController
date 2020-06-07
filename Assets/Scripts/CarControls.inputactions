@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Disconnect",
+                    "type": "Button",
+                    "id": "560cd444-3562-4909-9890-978924276347",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -99,6 +107,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DecreaseThrottleMultiplier",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8015855d-d37d-4252-8e2c-ed17c5d3bb0d",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disconnect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -160,6 +179,14 @@
                     "name": "DecreaseThrottleMultiplier",
                     "type": "Button",
                     "id": "4a547099-1d61-4f00-b552-8d048ae78f65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Disconnect",
+                    "type": "Button",
+                    "id": "6e2934ae-7d34-4083-8209-51c46b14be79",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -240,6 +267,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DecreaseThrottleMultiplier",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1d65433-b3b0-4a2e-897d-a28cb3024435",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disconnect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

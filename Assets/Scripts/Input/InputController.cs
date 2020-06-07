@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     public CarControls control;
     public Networker ntwk;
     public Slider ThrottleMultiplier;
+    public Logger logger;
 
     private void OnEnable()
     {
@@ -36,8 +37,9 @@ public class InputController : MonoBehaviour
         control.GamepadController.Direction.canceled += ctx => ntwk.right = 0f;
         control.GamepadController.Acceleration.performed += ctx => ntwk.forward = ctx.ReadValue<Vector2>().y * ThrottleMultiplier.value;
         control.GamepadController.Acceleration.canceled += ctx => ntwk.forward = 0f;
-        control.GamepadController.IncreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value += ThrottleMultiplier.maxValue/10f;
+        control.GamepadController.IncreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value += ThrottleMultiplier.maxValue / 10f;
         control.GamepadController.DecreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value -= ThrottleMultiplier.maxValue / 10f;
+        control.GamepadController.Disconnect.performed += ctx => logger.clickedDisconnect();
 
         // Keyboard Controls
         control.Keyboard.Headlight.performed += ctx => ntwk.toggelHeadLights();
@@ -51,6 +53,7 @@ public class InputController : MonoBehaviour
         control.Keyboard.Left.canceled += ctx => ntwk.right = 0f;
         control.Keyboard.IncreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value += ThrottleMultiplier.maxValue / 10f;
         control.Keyboard.DecreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value -= ThrottleMultiplier.maxValue / 10f;
+        control.Keyboard.Disconnect.performed += ctx => logger.clickedDisconnect();
     }
 
     public void EnableController(bool torf)

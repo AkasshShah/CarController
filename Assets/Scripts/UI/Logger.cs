@@ -10,7 +10,7 @@ public class Logger : MonoBehaviour
 {
     public Networker networking;
     public InputController inputManager;
-    public LogControl logControl;
+    public LogControl logControlSettingsMenu;
     public string[] messages;
     public Color warningColor;
     public Color normalColor;
@@ -22,6 +22,8 @@ public class Logger : MonoBehaviour
     public TMP_InputField Right;
     public Button KeyboardInput;
     public Button ControllerInput;
+    public GameObject SettingsPanel;
+    public GameObject ControlPanel;
 
     void Awake()
     {
@@ -41,12 +43,17 @@ public class Logger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IPInput.text = "192.168.0.102";
         setConnectInteractable();
         allowTextInput();
         KeyboardInput.interactable = false;
         ControllerInput.interactable = false;
         Right.text = "0";
         Forward.text = "0";
+        if (SettingsPanel != null && ControlPanel != null)
+        {
+            connected(false);
+        }
     }
 
     // Update is called once per frame
@@ -61,7 +68,7 @@ public class Logger : MonoBehaviour
 
     public void logMsg(string newLog, Color colour)
     {
-        logControl.logMsg(newLog, colour);
+        logControlSettingsMenu.logMsg(newLog, colour);
     }
 
     public void setConnectInteractable()
@@ -120,5 +127,21 @@ public class Logger : MonoBehaviour
         inputManager.EnableController(true);
         KeyboardInput.interactable = true;
         ControllerInput.interactable = false;
+    }
+
+    public void connected(bool cord)
+    {
+        if (cord)
+        {
+            SettingsPanel.gameObject.SetActive(false);
+            ControlPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            SettingsPanel.gameObject.SetActive(true);
+            ControlPanel.gameObject.SetActive(false);
+            inputManager.EnableKeyboard(false);
+            inputManager.EnableController(false);
+        }
     }
 }

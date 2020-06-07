@@ -57,6 +57,14 @@ public class @CarControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Disconnect"",
+                    ""type"": ""Button"",
+                    ""id"": ""560cd444-3562-4909-9890-978924276347"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -112,6 +120,17 @@ public class @CarControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DecreaseThrottleMultiplier"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8015855d-d37d-4252-8e2c-ed17c5d3bb0d"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Disconnect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -173,6 +192,14 @@ public class @CarControls : IInputActionCollection, IDisposable
                     ""name"": ""DecreaseThrottleMultiplier"",
                     ""type"": ""Button"",
                     ""id"": ""4a547099-1d61-4f00-b552-8d048ae78f65"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Disconnect"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e2934ae-7d34-4083-8209-51c46b14be79"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -255,6 +282,17 @@ public class @CarControls : IInputActionCollection, IDisposable
                     ""action"": ""DecreaseThrottleMultiplier"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1d65433-b3b0-4a2e-897d-a28cb3024435"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Disconnect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +306,7 @@ public class @CarControls : IInputActionCollection, IDisposable
         m_GamepadController_Acceleration = m_GamepadController.FindAction("Acceleration", throwIfNotFound: true);
         m_GamepadController_IncreaseThrottleMultiplier = m_GamepadController.FindAction("IncreaseThrottleMultiplier", throwIfNotFound: true);
         m_GamepadController_DecreaseThrottleMultiplier = m_GamepadController.FindAction("DecreaseThrottleMultiplier", throwIfNotFound: true);
+        m_GamepadController_Disconnect = m_GamepadController.FindAction("Disconnect", throwIfNotFound: true);
         // Keyboard
         m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
         m_Keyboard_Forward = m_Keyboard.FindAction("Forward", throwIfNotFound: true);
@@ -277,6 +316,7 @@ public class @CarControls : IInputActionCollection, IDisposable
         m_Keyboard_Headlight = m_Keyboard.FindAction("Headlight", throwIfNotFound: true);
         m_Keyboard_IncreaseThrottleMultiplier = m_Keyboard.FindAction("IncreaseThrottleMultiplier", throwIfNotFound: true);
         m_Keyboard_DecreaseThrottleMultiplier = m_Keyboard.FindAction("DecreaseThrottleMultiplier", throwIfNotFound: true);
+        m_Keyboard_Disconnect = m_Keyboard.FindAction("Disconnect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -331,6 +371,7 @@ public class @CarControls : IInputActionCollection, IDisposable
     private readonly InputAction m_GamepadController_Acceleration;
     private readonly InputAction m_GamepadController_IncreaseThrottleMultiplier;
     private readonly InputAction m_GamepadController_DecreaseThrottleMultiplier;
+    private readonly InputAction m_GamepadController_Disconnect;
     public struct GamepadControllerActions
     {
         private @CarControls m_Wrapper;
@@ -340,6 +381,7 @@ public class @CarControls : IInputActionCollection, IDisposable
         public InputAction @Acceleration => m_Wrapper.m_GamepadController_Acceleration;
         public InputAction @IncreaseThrottleMultiplier => m_Wrapper.m_GamepadController_IncreaseThrottleMultiplier;
         public InputAction @DecreaseThrottleMultiplier => m_Wrapper.m_GamepadController_DecreaseThrottleMultiplier;
+        public InputAction @Disconnect => m_Wrapper.m_GamepadController_Disconnect;
         public InputActionMap Get() { return m_Wrapper.m_GamepadController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -364,6 +406,9 @@ public class @CarControls : IInputActionCollection, IDisposable
                 @DecreaseThrottleMultiplier.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDecreaseThrottleMultiplier;
+                @Disconnect.started -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDisconnect;
+                @Disconnect.performed -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDisconnect;
+                @Disconnect.canceled -= m_Wrapper.m_GamepadControllerActionsCallbackInterface.OnDisconnect;
             }
             m_Wrapper.m_GamepadControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -383,6 +428,9 @@ public class @CarControls : IInputActionCollection, IDisposable
                 @DecreaseThrottleMultiplier.started += instance.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.performed += instance.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.canceled += instance.OnDecreaseThrottleMultiplier;
+                @Disconnect.started += instance.OnDisconnect;
+                @Disconnect.performed += instance.OnDisconnect;
+                @Disconnect.canceled += instance.OnDisconnect;
             }
         }
     }
@@ -398,6 +446,7 @@ public class @CarControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Keyboard_Headlight;
     private readonly InputAction m_Keyboard_IncreaseThrottleMultiplier;
     private readonly InputAction m_Keyboard_DecreaseThrottleMultiplier;
+    private readonly InputAction m_Keyboard_Disconnect;
     public struct KeyboardActions
     {
         private @CarControls m_Wrapper;
@@ -409,6 +458,7 @@ public class @CarControls : IInputActionCollection, IDisposable
         public InputAction @Headlight => m_Wrapper.m_Keyboard_Headlight;
         public InputAction @IncreaseThrottleMultiplier => m_Wrapper.m_Keyboard_IncreaseThrottleMultiplier;
         public InputAction @DecreaseThrottleMultiplier => m_Wrapper.m_Keyboard_DecreaseThrottleMultiplier;
+        public InputAction @Disconnect => m_Wrapper.m_Keyboard_Disconnect;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -439,6 +489,9 @@ public class @CarControls : IInputActionCollection, IDisposable
                 @DecreaseThrottleMultiplier.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDecreaseThrottleMultiplier;
+                @Disconnect.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDisconnect;
+                @Disconnect.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDisconnect;
+                @Disconnect.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnDisconnect;
             }
             m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -464,6 +517,9 @@ public class @CarControls : IInputActionCollection, IDisposable
                 @DecreaseThrottleMultiplier.started += instance.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.performed += instance.OnDecreaseThrottleMultiplier;
                 @DecreaseThrottleMultiplier.canceled += instance.OnDecreaseThrottleMultiplier;
+                @Disconnect.started += instance.OnDisconnect;
+                @Disconnect.performed += instance.OnDisconnect;
+                @Disconnect.canceled += instance.OnDisconnect;
             }
         }
     }
@@ -475,6 +531,7 @@ public class @CarControls : IInputActionCollection, IDisposable
         void OnAcceleration(InputAction.CallbackContext context);
         void OnIncreaseThrottleMultiplier(InputAction.CallbackContext context);
         void OnDecreaseThrottleMultiplier(InputAction.CallbackContext context);
+        void OnDisconnect(InputAction.CallbackContext context);
     }
     public interface IKeyboardActions
     {
@@ -485,5 +542,6 @@ public class @CarControls : IInputActionCollection, IDisposable
         void OnHeadlight(InputAction.CallbackContext context);
         void OnIncreaseThrottleMultiplier(InputAction.CallbackContext context);
         void OnDecreaseThrottleMultiplier(InputAction.CallbackContext context);
+        void OnDisconnect(InputAction.CallbackContext context);
     }
 }
