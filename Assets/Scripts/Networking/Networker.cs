@@ -22,7 +22,9 @@ public class Networker : MonoBehaviour
     {
         sendMsgs = new string[] {
             "quit", // 0
-            "headlight" // 1
+            "headlight", // 1
+            "shutdwon", // 2
+            "reboot" // 3
         };
         lastSent = new Vector2(0f, 0f);
     }
@@ -95,7 +97,31 @@ public class Networker : MonoBehaviour
         }
         connectedFalse();
     }
-    
+
+    public void shutdwonBot()
+    {
+        if (clientSocket != null)
+        {
+            sendData(sendMsgs[2]);
+            clientSocket.GetStream().Close();
+            clientSocket.Close();
+            log.logMsg(log.messages[9], log.alertColor);
+        }
+        connectedFalse();
+    }
+
+    public void rebootBot()
+    {
+        if (clientSocket != null)
+        {
+            sendData(sendMsgs[3]);
+            clientSocket.GetStream().Close();
+            clientSocket.Close();
+            log.logMsg(log.messages[10], log.alertColor);
+        }
+        connectedFalse();
+    }
+
     public void toggelHeadLights()
     {
         log.logMsg(log.messages[7], log.normalColor);

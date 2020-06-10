@@ -36,7 +36,9 @@ public class Logger : MonoBehaviour
             "Disconnected...", // 5
             "Please provide valid IP", // 6
             "Headlights", // 7
-            "Please Connect to car first" // 8
+            "Please Connect to car first", // 8
+            "Shutting Down", // 9
+            "Rebooting" // 10
         };
     }
 
@@ -117,6 +119,16 @@ public class Logger : MonoBehaviour
     public void clickedDisconnect()
     {
         networking.disconnectFromBot();
+    }
+
+    public void clickedShutdown()
+    {
+        networking.shutdwonBot();
+    }
+
+    public void clickedReboot()
+    {
+        networking.rebootBot();
     }
 
     public void inputKeyboardSelected()
