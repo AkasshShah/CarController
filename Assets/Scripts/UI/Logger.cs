@@ -61,8 +61,14 @@ public class Logger : MonoBehaviour
     {
         if (networking.connected)
         {
-            Right.text = networking.right.ToString();
-            Forward.text = networking.forward.ToString();
+            if (!Right.text.Equals(networking.right.ToString()))
+            {
+                Right.text = networking.right.ToString();
+            }
+            if (!Forward.text.Equals(networking.forward.ToString()))
+            {
+                Forward.text = networking.forward.ToString();
+            }
         }
     }
 

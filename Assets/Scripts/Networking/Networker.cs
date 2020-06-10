@@ -16,6 +16,7 @@ public class Networker : MonoBehaviour
     public InputController inp;
     public float forward;
     public float right;
+    public Vector2 lastSent;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class Networker : MonoBehaviour
             "quit", // 0
             "headlight" // 1
         };
+        lastSent = new Vector2(0f, 0f);
     }
     // Start is called before the first frame update
     void Start()
@@ -33,8 +35,10 @@ public class Networker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (connected)
+        if (connected && (lastSent.x != right || lastSent.y != forward))
         {
+            lastSent.x = right;
+            lastSent.y = forward;
             string toSend = "{\"f\": " + forward.ToString() + ", \"r\": " + right.ToString() + "}";
             sendData(toSend);
         }
