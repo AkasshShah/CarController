@@ -23,7 +23,7 @@ public class Networker : MonoBehaviour
         sendMsgs = new string[] {
             "quit", // 0
             "headlight", // 1
-            "shutdwon", // 2
+            "shutdown", // 2
             "reboot" // 3
         };
         lastSent = new Vector2(0f, 0f);
