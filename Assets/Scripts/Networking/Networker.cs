@@ -7,8 +7,8 @@ using System.Net.Sockets;
 public class Networker : MonoBehaviour
 {
     public string BotIP;
-    // public int BotPort = 42069;
-    public int BotPort = 99;
+    public int BotPort = 42069;
+    // public int BotPort = 99;
     public Logger log;
     public string[] sendMsgs;
     public System.Net.Sockets.TcpClient clientSocket;
