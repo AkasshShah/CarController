@@ -48,8 +48,14 @@ public class Logger : MonoBehaviour
         IPInput.text = "192.168.0.102";
         setConnectInteractable();
         allowTextInput();
-        KeyboardInput.interactable = false;
-        ControllerInput.interactable = false;
+        if (KeyboardInput != null)
+        {
+            KeyboardInput.interactable = false;
+        }
+        if (ControllerInput != null)
+        {
+            ControllerInput.interactable = false;
+        }
         Right.text = "0";
         Forward.text = "0";
         if (SettingsPanel != null && ControlPanel != null)
@@ -135,8 +141,14 @@ public class Logger : MonoBehaviour
     {
         inputManager.EnableKeyboard(true);
         inputManager.EnableController(false);
-        KeyboardInput.interactable = false;
-        ControllerInput.interactable = true;
+        if (KeyboardInput != null)
+        {
+            KeyboardInput.interactable = false;
+        }
+        if (ControllerInput != null)
+        {
+            ControllerInput.interactable = true;
+        }        
     }
 
     public void inputControllerSelected()

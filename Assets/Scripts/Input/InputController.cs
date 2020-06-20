@@ -9,11 +9,20 @@ public class InputController : MonoBehaviour
     public Networker ntwk;
     public Slider ThrottleMultiplier;
     public Logger logger;
+    [SerializeField]
+    private Joystick leftStick;
+    [SerializeField]
+    private Joystick rightStick;
 
     private void OnEnable()
     {
         EnableController(false);
-        EnableKeyboard(false);
+        EnableKeyboard(true);
+        if (leftStick != null && rightStick != null)
+        {
+            EnableController(false);
+            EnableKeyboard(false);
+        }
     }
 
     private void Start()
@@ -54,6 +63,15 @@ public class InputController : MonoBehaviour
         control.Keyboard.IncreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value += ThrottleMultiplier.maxValue / 10f;
         control.Keyboard.DecreaseThrottleMultiplier.performed += ctk => ThrottleMultiplier.value -= ThrottleMultiplier.maxValue / 10f;
         control.Keyboard.Disconnect.performed += ctx => logger.clickedDisconnect();
+    }
+
+    private void Update()
+    {
+        if (leftStick != null && rightStick != null)
+        {
+            ntwk.forward = ThrottleMultiplier.value * leftStick.Vertical;
+            ntwk.right = rightStick.Horizontal;
+        }
     }
 
     public void EnableController(bool torf)
