@@ -22,8 +22,13 @@ public class Logger : MonoBehaviour
     public TMP_InputField Right;
     public Button KeyboardInput;
     public Button ControllerInput;
+    public Button TouchInput;
     public GameObject SettingsPanel;
     public GameObject ControlPanel;
+    [SerializeField]
+    private GameObject leftStick;
+    [SerializeField]
+    private GameObject rightStick;
 
     void Awake()
     {
@@ -148,15 +153,37 @@ public class Logger : MonoBehaviour
         if (ControllerInput != null)
         {
             ControllerInput.interactable = true;
-        }        
+        }
+        inputManager.touchControlsOn = false;
     }
 
     public void inputControllerSelected()
     {
         inputManager.EnableKeyboard(false);
         inputManager.EnableController(true);
-        KeyboardInput.interactable = true;
+        if (KeyboardInput != null)
+        {
+            KeyboardInput.interactable = true;
+        }
         ControllerInput.interactable = false;
+        if (TouchInput != null)
+        {
+            TouchInput.interactable = true;
+            leftStick.SetActive(false);
+            rightStick.SetActive(false);
+        }
+        inputManager.touchControlsOn = false;
+    }
+
+    public void inputTouchSelected()
+    {
+        inputManager.EnableKeyboard(false);
+        inputManager.EnableController(false);
+        ControllerInput.interactable = true;
+        TouchInput.interactable = false;
+        inputManager.touchControlsOn = true;
+        leftStick.SetActive(true);
+        rightStick.SetActive(true);
     }
 
     public void connected(bool cord)
@@ -165,6 +192,10 @@ public class Logger : MonoBehaviour
         {
             SettingsPanel.gameObject.SetActive(false);
             ControlPanel.gameObject.SetActive(true);
+            if (TouchInput != null)
+            {
+                inputTouchSelected();
+            }
         }
         else
         {

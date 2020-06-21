@@ -75,7 +75,7 @@ public class Networker : MonoBehaviour
         catch(SocketException e)
         {
             log.logMsg(log.messages[3], log.warningColor);
-            Debug.Log(e.Message);
+            // Debug.Log(e.Message);
             connectedFalse();
         }
 
@@ -144,7 +144,7 @@ public class Networker : MonoBehaviour
         catch (Exception e)
         {
             disconnectFromBot();
-            Debug.Log(e);
+            // Debug.Log(e);
         }
     }
 }

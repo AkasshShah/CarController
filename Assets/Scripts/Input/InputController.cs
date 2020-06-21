@@ -10,15 +10,16 @@ public class InputController : MonoBehaviour
     public Slider ThrottleMultiplier;
     public Logger logger;
     [SerializeField]
-    private Joystick leftStick;
+    private Joystick leftStick_joystick;
     [SerializeField]
-    private Joystick rightStick;
+    private Joystick rightStick_joystick;
+    public bool touchControlsOn;
 
     private void OnEnable()
     {
         EnableController(false);
         EnableKeyboard(true);
-        if (leftStick != null && rightStick != null)
+        if (leftStick_joystick != null && rightStick_joystick != null)
         {
             EnableController(false);
             EnableKeyboard(false);
@@ -37,7 +38,8 @@ public class InputController : MonoBehaviour
     }
 
     private void Awake()
-    {
+    {       
+
         control = new CarControls();
 
         // Gamepad Controls
@@ -67,10 +69,10 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        if (leftStick != null && rightStick != null)
+        if (touchControlsOn && leftStick_joystick != null && rightStick_joystick != null)
         {
-            ntwk.forward = ThrottleMultiplier.value * leftStick.Vertical;
-            ntwk.right = rightStick.Horizontal;
+            ntwk.forward = ThrottleMultiplier.value * leftStick_joystick.Vertical;
+            ntwk.right = rightStick_joystick.Horizontal;
         }
     }
 
