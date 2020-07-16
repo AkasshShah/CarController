@@ -13,33 +13,38 @@ public class InputController : MonoBehaviour
     private Joystick leftStick_joystick;
     [SerializeField]
     private Joystick rightStick_joystick;
-    public bool touchControlsOn;
+    [SerializeField]
+    private bool touchControlsOn;
 
+    /*
     private void OnEnable()
     {
         EnableController(false);
-        EnableKeyboard(true);
+        EnableKeyboard(false);
         if (leftStick_joystick != null && rightStick_joystick != null)
         {
             EnableController(false);
             EnableKeyboard(false);
         }
     }
+    */
 
     private void Start()
     {
         EnableController(false);
         EnableKeyboard(false);
+        allowTouch(false);
     }
 
+    /*
     private void OnDisable()
     {
         control.GamepadController.Disable();
     }
+    */
 
     private void Awake()
-    {       
-
+    {
         control = new CarControls();
 
         // Gamepad Controls
@@ -70,6 +75,7 @@ public class InputController : MonoBehaviour
     private void Update()
     {
         if (touchControlsOn && leftStick_joystick != null && rightStick_joystick != null)
+        // if (leftStick_joystick != null && rightStick_joystick != null)
         {
             ntwk.forward = ThrottleMultiplier.value * leftStick_joystick.Vertical;
             ntwk.right = rightStick_joystick.Horizontal;
@@ -98,5 +104,10 @@ public class InputController : MonoBehaviour
         {
             control.Keyboard.Disable();
         }
+    }
+
+    public void allowTouch(bool torf)
+    {
+        touchControlsOn = torf;
     }
 }

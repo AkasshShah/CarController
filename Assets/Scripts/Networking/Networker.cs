@@ -8,6 +8,7 @@ public class Networker : MonoBehaviour
 {
     public string BotIP;
     public int BotPort = 42069;
+    public int BotCameraPort = 42068;
     // public int BotPort = 99;
     public Logger log;
     public string[] sendMsgs;
@@ -18,6 +19,8 @@ public class Networker : MonoBehaviour
     public float forward;
     public float right;
     public Vector2 lastSent;
+    [SerializeField]
+    private MjpegTexture mjpeg;
 
     private void Awake()
     {
@@ -81,6 +84,7 @@ public class Networker : MonoBehaviour
 
         if(clientSocket != null && clientSocket.Connected)
         {
+            mjpeg.streamAddress = "http://" + BotIP + ":" + BotCameraPort.ToString() + "/stream.mjpg";
             connectedTrue();
             log.logMsg(log.messages[1], log.normalColor);
             log.inputKeyboardSelected();
@@ -143,7 +147,11 @@ public class Networker : MonoBehaviour
         }
         catch (Exception e)
         {
-            disconnectFromBot();
+            connected = false;
+            log.setConnectInteractable();
+            log.allowTextInput();
+            log.connected(false);
+            // disconnectFromBot();
             // Debug.Log(e);
         }
     }

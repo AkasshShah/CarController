@@ -154,7 +154,7 @@ public class Logger : MonoBehaviour
         {
             ControllerInput.interactable = true;
         }
-        inputManager.touchControlsOn = false;
+        inputManager.allowTouch(false);
     }
 
     public void inputControllerSelected()
@@ -172,7 +172,7 @@ public class Logger : MonoBehaviour
             leftStick.SetActive(false);
             rightStick.SetActive(false);
         }
-        inputManager.touchControlsOn = false;
+        inputManager.allowTouch(false);
     }
 
     public void inputTouchSelected()
@@ -181,7 +181,7 @@ public class Logger : MonoBehaviour
         inputManager.EnableController(false);
         ControllerInput.interactable = true;
         TouchInput.interactable = false;
-        inputManager.touchControlsOn = true;
+        inputManager.allowTouch(true);
         leftStick.SetActive(true);
         rightStick.SetActive(true);
     }
@@ -194,7 +194,13 @@ public class Logger : MonoBehaviour
             ControlPanel.gameObject.SetActive(true);
             if (TouchInput != null)
             {
-                inputTouchSelected();
+                inputManager.EnableKeyboard(false);
+                inputManager.EnableController(false);
+                ControllerInput.interactable = true;
+                TouchInput.interactable = false;
+                inputManager.allowTouch(true);
+                leftStick.SetActive(true);
+                rightStick.SetActive(true);
             }
         }
         else
@@ -203,6 +209,7 @@ public class Logger : MonoBehaviour
             ControlPanel.gameObject.SetActive(false);
             inputManager.EnableKeyboard(false);
             inputManager.EnableController(false);
+            inputManager.allowTouch(false);
         }
     }
 }
